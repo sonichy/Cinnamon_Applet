@@ -1,0 +1,8 @@
+{    
+    "memo" : {
+        "type" : "textview",
+        "default" : "",
+        "description" : "Memo",
+        "tooltip" : "Set your memo here."
+    }
+}

@@ -1,0 +1,7 @@
+{
+    "uuid": "datetime@sonichy",
+    "name": "Datetime",
+    "description": "Display datetime on Cinnamon taskbar, display calendar on pop window, display memo on tooltip.",
+    "icon": "gnome-calendar",
+    "version": "1.0 (2023-03-11)"    
+}
