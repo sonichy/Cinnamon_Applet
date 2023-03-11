@@ -1,10 +1,8 @@
 const Applet = imports.ui.applet;
-const Util = imports.misc.util;
-const {GLib, Gio} = imports.gi;
+const Settings = imports.ui.settings;
 const PopupMenu = imports.ui.popupMenu;
 const St = imports.gi.St;
-const Settings = imports.ui.settings;
-const Lang = imports.lang;
+const {GLib, Gio} = imports.gi;
 
 function MyApplet(orientation, panel_height, instance_id) {
     this._init(orientation, panel_height, instance_id);
@@ -17,7 +15,7 @@ MyApplet.prototype = {
         Applet.TextApplet.prototype._init.call(this, orientation, panel_height, instance_id);        
         //global.logError('sonichy');
         this.settings = new Settings.AppletSettings(this, "datetime@sonichy", this.instance_id);
-    	this.settings.bind("memo", "memo", this._onSettingsChanged);
+    	this.settings.bind("memo", "memo", null);
     	
         this.set_applet_label("00:00\n1/1 一");
         this._applet_label.set_style("text-align:center");
@@ -55,11 +53,7 @@ MyApplet.prototype = {
     },
     
     on_applet_clicked: function() {
-        //Util.spawnCommandLine("gnome-system-monitor");
         this.menu.toggle();
-    },
-    
-    _onSettingsChanged() {
     }
     
 };
