@@ -47,7 +47,7 @@ MyApplet.prototype = {
           
         GLib.timeout_add_seconds(GLib.PRIORITY_DEFAULT, 1, () => {        		
         	 var net = this.net();        	   	 
-        	 label1.set_text("↑ " + this.B2G(net.ubs) + "/s\n↓ " + this.B2G(net.dbs) + "/s");        	 
+        	 label1.set_text("↑" + this.B2G(net.ubs) + "/s\n↓" + this.B2G(net.dbs) + "/s");
         	 this.cpu();
          	 var s = _("Uptime: " + this.uptime() + "\nCPU: " + cp + "%\nMem: " + this.mem() + "\nUp: " + this.B2G(net.ub) + "\nDown: "+ this.B2G(net.db));
 		 	 this.set_applet_tooltip(s); //resize flash
@@ -61,7 +61,7 @@ MyApplet.prototype = {
     onRepaint_mem: function (area) {
         let cr = area.get_context();
         cr.setLineWidth(3);
-        if (mp > 90)
+        if (mp >= 90)
             cr.setSourceRGBA(1, 0, 0, 1);
         else
             cr.setSourceRGBA(1, 1, 1, 1);
@@ -74,7 +74,7 @@ MyApplet.prototype = {
     onRepaint_cpu: function (area) {
         let cr = area.get_context();
         cr.setLineWidth(3);        
-        if (cp > 90)
+        if (cp >= 90)
             cr.setSourceRGBA(1, 0, 0, 1);
         else
             cr.setSourceRGBA(1, 1, 1, 1);
@@ -162,7 +162,7 @@ MyApplet.prototype = {
         if (b > 999999999) {
             b = b / (1024 * 1024 * 1024);
             if (b >= 100) {
-                s = b.toFixed(0) + 'GB';
+                s = ' ' + b.toFixed(0) + 'GB';
             } else if (b >= 10) {
                 s = b.toFixed(1) + 'GB';
             } else {
@@ -172,7 +172,7 @@ MyApplet.prototype = {
             if (b > 999999) {
                 b = b / (1024 * 1024);
                 if (b >= 100) {
-                    s = b.toFixed(0) + 'MB';
+                    s = ' ' + b.toFixed(0) + 'MB';
                 } else if (b >= 10) {
                     s = b.toFixed(1) + 'MB';
                 } else {
@@ -182,19 +182,19 @@ MyApplet.prototype = {
                 if (b > 999) {
                     b = b / 1024;
                     if (b >= 100) {
-                        s = b.toFixed(0) + 'KB';
-                    } else if (b >= 10) {
                         s = ' ' + b.toFixed(0) + 'KB';
-                    } else {
+                    } else if (b >= 10) {
                         s = '  ' + b.toFixed(0) + 'KB';
+                    } else {
+                        s = '   ' + b.toFixed(0) + 'KB';
                     }
                 } else {
                     if (b >= 100) {
-                        s = b + ' B';
-                    } else if (b >= 10) {
                         s = ' ' + b + ' B';
-                    } else {
+                    } else if (b >= 10) {
                         s = '  ' + b + ' B';
+                    } else {
+                        s = '   ' + b + ' B';
                     }
                 }
             }
