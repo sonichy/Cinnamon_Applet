@@ -25,7 +25,9 @@ MyApplet.prototype = {
         
         label1 = new St.Label();
         label1.set_text("↑  0KB/s\n↓  0KB/s");
-        this.actor.add(label1);  // actor = St.BoxLayout
+        //label1.style = "font-family: Noto Sans Mono";
+        label1.set_style("font-family: Noto Sans Mono");
+        this.actor.add(label1);
         
         area_cpu = new St.DrawingArea();
         area_cpu.width = 3;
@@ -45,7 +47,7 @@ MyApplet.prototype = {
           
         GLib.timeout_add_seconds(GLib.PRIORITY_DEFAULT, 1, () => {        		
         	 var net = this.net();        	   	 
-        	 label1.set_text("↑ " + this.B2G(net.ubs) + "/s\n↓ " + this.B2G(net.dbs) + "/s");
+        	 label1.set_text("↑ " + this.B2G(net.ubs) + "/s\n↓ " + this.B2G(net.dbs) + "/s");        	 
         	 this.cpu();
          	 var s = _("Uptime: " + this.uptime() + "\nCPU: " + cp + "%\nMem: " + this.mem() + "\nUp: " + this.B2G(net.ub) + "\nDown: "+ this.B2G(net.db));
 		 	 this.set_applet_tooltip(s); //resize flash
@@ -160,31 +162,31 @@ MyApplet.prototype = {
         if (b > 999999999) {
             b = b / (1024 * 1024 * 1024);
             if (b >= 100) {
-                s = b.toFixed(0) + ' GB';
+                s = b.toFixed(0) + 'GB';
             } else if (b >= 10) {
-                s = b.toFixed(1) + ' GB';
+                s = b.toFixed(1) + 'GB';
             } else {
-                s = b.toFixed(2) + ' GB';
+                s = b.toFixed(2) + 'GB';
             }
         } else {
             if (b > 999999) {
                 b = b / (1024 * 1024);
                 if (b >= 100) {
-                    s = b.toFixed(0) + ' MB';
+                    s = b.toFixed(0) + 'MB';
                 } else if (b >= 10) {
-                    s = b.toFixed(1) + ' MB';
+                    s = b.toFixed(1) + 'MB';
                 } else {
-                    s = b.toFixed(2) + ' MB';
+                    s = b.toFixed(2) + 'MB';
                 }
            } else {
                 if (b > 999) {
                     b = b / 1024;
                     if (b >= 100) {
-                        s = b.toFixed(0) + ' KB';
+                        s = b.toFixed(0) + 'KB';
                     } else if (b >= 10) {
-                        s = ' ' + b.toFixed(0) + ' KB';
+                        s = ' ' + b.toFixed(0) + 'KB';
                     } else {
-                        s = '  ' + b.toFixed(0) + ' KB';
+                        s = '  ' + b.toFixed(0) + 'KB';
                     }
                 } else {
                     if (b >= 100) {
