@@ -131,10 +131,10 @@ MyApplet.prototype = {
         const [, contents, etag] = file.load_contents(null);
         var s = contents.toString().split('\n');        
         var MT = s[0].split(/\s+/);
-        var MF = s[1].split(/\s+/);
+        var MA = s[2].split(/\s+/);
         var mt = Number(MT[1]);
-        var mf = Number(MF[1]);
-        var mu = mt - mf;
+        var ma = Number(MA[1]);
+        var mu = mt - ma;
         mp = ~~(mu / mt * 100);
         var m = this.B2G(mu*1024) + ' / '+ this.B2G(mt*1024) + ' = ' + mp + '%';
         return m;

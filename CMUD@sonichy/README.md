@@ -3,6 +3,8 @@ Display net speed on Cinnamon taskbar, display uptime, CPU usage, memory usage, 
 ![alt](preview.png)
 
 ## Changelog
+### V2.2 (2023-05-07)
+Fix MemAvailable calculate error.
 ### V2.1 (2023-03-11)
 Bytes unit 3 digit.
 ### V2.0 (2022-07-09)
