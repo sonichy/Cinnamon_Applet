@@ -42,9 +42,10 @@ MyApplet.prototype = {
 	        var m1 = (date.getMonth()+1);
 	        var day = date.getDay();
 	        var weekday = ["日", "一", "二", "三", "四", "五", "六"];
+	        var weekday1 = ["星期日", "星期一", "星期二", "星期三", "星期四", "星期五", "星期六"];
 	        var s1 = h + ":" + m + "\n" + m1 + "/" + date.getDate() + " " + weekday[day];
 	        this.set_applet_label(s1);
-            s1 = date.getFullYear() + "/" + m1 + "/" + date.getDate() + " " + h + ":" + m + ":" + s + "\n" + this.memo;
+            s1 = date.toLocaleString() + " " + weekday1[day] + "\n" + this.memo;
         	this.set_applet_tooltip(s1);
         	label.set_text(s1);
         	return true; // loop
