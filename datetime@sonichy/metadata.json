@@ -3,5 +3,6 @@
     "name": "Datetime",
     "description": "Display datetime on Cinnamon taskbar, display calendar on pop window, display memo on tooltip.",
     "icon": "cs-date-time",
+    "author": "sonichy",
     "version": "1.1 (2025-01-15)"    
 }

@@ -2,5 +2,6 @@
     "uuid": "CMUD@sonichy",
     "name": "CMUD",
     "description": "Display net speed on Cinnamon taskbar, display uptime, CPU usage, memory usage, upload bytes, download bytes on pop window and tooltip.",
+    "author": "sonichy",
     "version": "2.2 (2023-05-07)"
 }
