@@ -26,7 +26,7 @@ MyApplet.prototype = {
         label1 = new St.Label();
         label1.set_text("↑  0KB/s\n↓  0KB/s");
         //label1.style = "font-family: Noto Sans Mono";
-        label1.set_style("font-family: Noto Sans Mono");
+        label1.set_style("text-align:center; font-family:Droid Sans Mono");
         this.actor.add(label1);
         
         area_cpu = new St.DrawingArea();
