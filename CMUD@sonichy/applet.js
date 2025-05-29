@@ -25,8 +25,7 @@ MyApplet.prototype = {
         
         label1 = new St.Label();
         label1.set_text("↑  0KB/s\n↓  0KB/s");
-        //label1.style = "font-family: Noto Sans Mono";
-        label1.set_style("text-align:center; font-family:Droid Sans Mono");
+        label1.set_style("text-align:center; font-family:Droid Sans Mono;");
         this.actor.add(label1);
         
         area_cpu = new St.DrawingArea();
@@ -35,7 +34,7 @@ MyApplet.prototype = {
         area_cpu.connect('repaint', this.onRepaint_cpu);
         this.actor.add(area_cpu);
         
-        this._applet_tooltip._tooltip.set_style("text-align:left");
+        this._applet_tooltip._tooltip.set_style("text-align:left; font-family:Droid Sans Mono;");
         this.menuManager = new PopupMenu.PopupMenuManager(this);        
         this.menu = new Applet.AppletPopupMenu(this, orientation);
         this.menuManager.addMenu(this.menu);
@@ -49,13 +48,13 @@ MyApplet.prototype = {
         	 var net = this.net();        	   	 
         	 label1.set_text("↑" + this.B2G(net.ubs) + "/s\n↓" + this.B2G(net.dbs) + "/s");
         	 this.cpu();
-         	 var s = _("Uptime: " + this.uptime() + "\nCPU: " + cp + "%\nMem: " + this.mem() + "\nUp: " + this.B2G(net.ub) + "\nDown: "+ this.B2G(net.db));
+         	 var s = _("UPT: " + this.uptime() + "\nCPU: " + cp + "%\nMEM: " + this.mem() + "\nUPB: " + this.B2G(net.ub) + "\nDNB: "+ this.B2G(net.db));
 		 	 this.set_applet_tooltip(s); //resize flash
 		 	 label2.set_text(s);
  		 	 area_mem.queue_repaint();
 		 	 area_cpu.queue_repaint();
-            return true; // loop
-    	 });    	  
+             return true; // loop
+    	 });
     },
     
     onRepaint_mem: function (area) {
