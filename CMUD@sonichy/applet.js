@@ -1,8 +1,9 @@
 const Applet = imports.ui.applet;
 const Util = imports.misc.util;
-const {GLib, Gio} = imports.gi;
+const { GLib, Gio } = imports.gi;
 const PopupMenu = imports.ui.popupMenu;
 const St = imports.gi.St;
+const Clutter = imports.gi.Clutter;
 const Cairo = imports.cairo;
 var label1, label2, area_mem, area_cpu;
 var db0 = 0, ub0 = 0, tt0=0, idle0 = 0, mp, cp;
@@ -23,8 +24,7 @@ MyApplet.prototype = {
         area_mem.connect('repaint', this.onRepaint_mem);
         this.actor.add(area_mem);
         
-        label1 = new St.Label();
-        label1.set_text("↑  0KB/s\n↓  0KB/s");
+        label1 = new St.Label({ text: '↑  0KB/s\n↓  0KB/s', y_align: Clutter.ActorAlign.CENTER });
         label1.set_style("text-align:center; font-family:Droid Sans Mono;");
         this.actor.add(label1);
         
