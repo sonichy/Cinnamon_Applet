@@ -8,6 +8,9 @@
 ## Cinnamon Applet 调试
 打开命令窗口：Alt + F2，输入 lg，Log 标签查看错误。
 
+## 翻译
+～/.local/share/locale/zh_CN/LC_MESSAGES/applets_name.mo
+
 ## 参考
 [Cinnamon - Applet 仓库](https://github.com/linuxmint/cinnamon-spices-applets)  
 [Cinnamon - Applet 文档](https://projects.linuxmint.com/reference/git/cinnamon-tutorials/write-applet.html)  
@@ -17,3 +20,4 @@
 [GJS: reading-file-contents](https://gjs.guide/guides/gio/file-operations.html#reading-file-contents)  
 [GTK:timeout_add_seconds()](https://docs.gtk.org/glib/func.timeout_add_seconds.html)  
 [cinnamon 任务栏天气扩展](https://github.com/linuxmint/cinnamon-spices-applets/tree/master/weather@mockturtl)
+[翻译](https://gjs.guide/extensions/development/translations.html)

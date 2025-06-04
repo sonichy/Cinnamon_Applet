@@ -1,0 +1,6 @@
+msgid "Display start menu on Cinnamon."
+msgstr "在Cinnamon上显示开始菜单。"
+
+msgid "StartMenu"
+msgstr "开始菜单"
+

@@ -1,0 +1,8 @@
+{
+    "uuid": "StartMenu@sonichy",
+    "name": "StartMenu",
+    "description": "Display start menu on Cinnamon.",
+    "icon": "cinnamon-symbolic",
+    "author": "sonichy",
+    "version": "1.0 (2025-06-04)"    
+}
