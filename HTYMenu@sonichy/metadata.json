@@ -1,8 +1,8 @@
 {
-    "uuid": "StartMenu@sonichy",
-    "name": "StartMenu",
+    "uuid": "HTYMenu@sonichy",
+    "name": "HTYMenu",
     "description": "Display start menu on Cinnamon.",
     "icon": "cinnamon-symbolic",
     "author": "sonichy",
-    "version": "1.0 (2025-06-04)"    
+    "version": "2.0 (2025-06-08)"
 }

@@ -5,6 +5,7 @@ const PopupMenu = imports.ui.popupMenu;
 const St = imports.gi.St;
 const GnomeSession = imports.misc.gnomeSession;
 const Util = imports.misc.util;
+const Settings = imports.ui.settings;
 
 function MyApplet(orientation, panel_height, instance_id) {
     this._init(orientation, panel_height, instance_id);
@@ -15,8 +16,14 @@ MyApplet.prototype = {
 
     _init: function(orientation, panel_height, instance_id) {
         Applet.IconApplet.prototype._init.call(this, orientation, panel_height, instance_id);
-        this.set_applet_icon_name("cinnamon-symbolic");
-        this.set_applet_tooltip(_("StartMenu"));
+        
+        this.settings = new Settings.AppletSettings(this, 'HTYMenu@sonichy', instance_id);
+        this.settings.bind('menu-icon', 'menuIcon', this.updateIcon);
+        
+        if (this.menuIcon == '')
+            this.menuIcon = 'cinnamon-symbolic';
+        this.set_applet_icon_name(this.menuIcon);
+        this.set_applet_tooltip(_('HTYMenu'));
         
         this.menuManager = new PopupMenu.PopupMenuManager(this);
         this.menu = new Applet.AppletPopupMenu(this, orientation);
@@ -24,8 +31,22 @@ MyApplet.prototype = {
         this.session = new GnomeSession.SessionManager();
         
         // /usr/share/cinnamon/applets/menu@cinnamon.org/appUtils.js
-        let appsys = Cinnamon.AppSystem.get_default();
-        let tree = appsys.get_tree();
+        this.appsys = Cinnamon.AppSystem.get_default();
+        this.appsys.connect('installed-changed', () => this.genMenu());
+        this.genMenu();        
+    },
+    
+    on_applet_clicked: function() {
+        this.menu.toggle();        
+    },
+    
+    updateIcon() {
+        this.set_applet_icon_name(this.menuIcon);
+    },
+    
+    genMenu() {
+        this.menu.removeAll();
+        let tree = this.appsys.get_tree();
         let root = tree.get_root_directory();
         let iter = root.iter();
         let nextType;
@@ -40,7 +61,7 @@ MyApplet.prototype = {
                 while (nextType1 = iter1.next()) {
                     if (nextType1 == CMenu.TreeItemType.ENTRY) {                
                         let desktopId = iter1.get_entry().get_desktop_file_id();                        
-                        let app = appsys.lookup_app(desktopId);
+                        let app = this.appsys.lookup_app(desktopId);
                         let info = app.get_app_info();
                         //global.logError(info.get_icon().to_string());
                         //subMenu.menu.addAction(app.get_name(), () => app.open_new_window(-1)); //不支持图标
@@ -82,11 +103,6 @@ MyApplet.prototype = {
         subMenu.menu.addMenuItem(menuItem);        
         
         this.menu.addMenuItem(subMenu);
-        
-    },
-    
-    on_applet_clicked: function() {
-        this.menu.toggle();        
     }
     
 };

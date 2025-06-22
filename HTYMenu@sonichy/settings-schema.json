@@ -1,0 +1,9 @@
+{    
+  "menu-icon" : {
+    "type" : "iconfilechooser",
+    "default" : "cinnamon-symbolic",
+    "description" : "Icon",
+    "tooltip" : "Select an icon to show in the panel.",
+    "default_icon" : "cinnamon-symbolic"
+  }
+}
